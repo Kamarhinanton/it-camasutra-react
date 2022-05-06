@@ -1,0 +1,13 @@
+.item a{
+    color: green;
+}
+
+.item img{
+    width:50px;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
