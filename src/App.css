@@ -9,3 +9,14 @@
             'n c';
     margin: 0 auto;
 }
+
+.app-wrapper-content{
+    grid-area: c;
+    background: aqua;
+}
+
+.app-wrapper-content img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
