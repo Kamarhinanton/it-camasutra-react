@@ -6,13 +6,13 @@ const Navbar = () => {
     return (
         <nav className={classes.nav}>
             <ul>
-                <li className={`${classes.item}`}>
-                    <NavLink  to="/Dialogs" className={({ isActive }) => (isActive ? classes.active : classes.inactive)}>
+                <li className={classes.item}>
+                    <NavLink  to="dialogs/" className={({ isActive }) => (isActive ? classes.active : classes.inactive)}>
                         dialogs
                     </NavLink>
                 </li>
                 <li className={classes.item}>
-                    <NavLink to="/Profile" className={({ isActive }) => (isActive ? classes.active : classes.inactive)}>
+                    <NavLink to="profile/" className={({ isActive }) => (isActive ? classes.active : classes.inactive)}>
                         profile
                     </NavLink>
                 </li>
