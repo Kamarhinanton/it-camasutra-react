@@ -3,6 +3,8 @@ import Post from "./Post/Post";
 import classes from './MyPosts.module.css';
 
 const MyPosts = () => {
+    let postData = [{id : 1, message: 'Hi, how are you', counts: 5 }, {id: 2, message: 'Hey you', counts: '23' }];
+    let posts = postData.map(post => <Post message ={post.message} likes={post.counts}/>)
     return <div>
         <h1>My posts</h1>
         <div>
@@ -11,8 +13,7 @@ const MyPosts = () => {
             <button>remove post</button>
         </div>
         <ul className={classes.post}>
-            <Post message ='Hi, how are you' likes='5'/>
-            <Post message ='Hey you' likes='23'/>
+            {posts}
         </ul>
     </div>
 
