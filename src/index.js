@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+let postData = [{id : 1, message: 'Hi, how are you', counts: 5 }, {id: 2, message: 'Hey you', counts: '23' }];
+let dialogsData = [
+    {id: 1, name: 'Anton'},
+    {id: 2, name: 'Ira'},
+    {id: 3, name: 'Matvey'},
+    {id: 4, name: 'Andrey'},
+    {id: 5, name: 'Lena'},
+    {id: 6, name: 'Ehor'}
+] ;
+let messages= [
+    {id: 1, message: 'hi'},
+    {id: 2, message: 'how are you'},
+    {id: 3, message: 'what is up'},
+];
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App postData ={postData} dialogsData={dialogsData} messages={messages}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
