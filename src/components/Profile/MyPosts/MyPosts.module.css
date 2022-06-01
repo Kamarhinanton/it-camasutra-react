@@ -1,3 +1,17 @@
 .post{
     font-size: 24px;
 }
+
+.content{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
+
+.content button{
+    margin-top: 20px;
+}
+
+.content textarea{
+    height: 100px;
+}
