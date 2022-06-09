@@ -19,6 +19,9 @@
     padding: 10px;
 }
 
-.message{
-
+.content{
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: 0 auto;
 }
