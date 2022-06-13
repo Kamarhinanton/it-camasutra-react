@@ -6,7 +6,8 @@ import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-
+//react бібліотека яка відмальовує ui
+//reducer(преобразовувач) функція яка приймає state, action, якщо потрібно приміняє action і повертає новий state.
 function App(props) {
     return (
       <BrowserRouter>
