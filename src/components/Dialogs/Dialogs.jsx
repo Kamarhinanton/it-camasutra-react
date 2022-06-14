@@ -2,22 +2,17 @@ import React from 'react';
 import classes from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./Messageitem/MessageItem";
-import {AddDialog, updateNewDialogText} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
     let dialogsElements = [
-        props.dialogsPage.dialogs.map(dialog => <DialogsItem name={dialog.name} id={dialog.id} /> )
+        props.dialogs.map(dialog => <DialogsItem name={dialog.name} id={dialog.id} /> )
     ];
     let messagesElement = [
-        props.dialogsPage.messages.map(message => <MessageItem message = {message.message} /> )
+        props.messages.map(message => <MessageItem message = {message.message} /> )
     ];
-    let addDialog = () => {
-        props.dispatch(AddDialog())
-    }
-    let onDialogChange = (e) => {
-        let NewDialog = e.target.value;
-        props.dispatch(updateNewDialogText(NewDialog))
+    let onAddDialog = () => {
+        props.AddDialog()
     }
 
     return (
@@ -31,8 +26,8 @@ const Dialogs = (props) => {
                 </div>
             </div>
             <div className={classes.content}>
-                <textarea onChange={onDialogChange} value={props.dialogsPage.newDialogText}></textarea>
-                <button onClick={addDialog}>add post</button>
+                <textarea onChange={props.onDialogChange} value={props.newDialogText}></textarea>
+                <button onClick={onAddDialog}>add post</button>
                 <button>remove post</button>
             </div>
         </div>
