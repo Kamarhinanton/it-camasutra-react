@@ -1,27 +1,32 @@
 import React from 'react';
 import {AddDialog, updateNewDialogText} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
+import StoreContext from "../../StoreContext";
 
 
-const DialogsContainer = (props) => {
-    let state = props.store.getState().dialogPage;
-
-    let addDialog = () => {
-        props.store.dispatch(AddDialog())
-    }
-    let onDialogChange = (e) => {
-        let NewDialog = e.target.value;
-        props.store.dispatch(updateNewDialogText(NewDialog))
-    }
-
+const DialogsContainer = () => {
     return (
-        <Dialogs
-            dialogs={state.dialogs}
-            messages={state.messages}
-            AddDialog={addDialog}
-            onDialogChange={onDialogChange}
-            newDialogText = {state.newDialogText}
-        />
+        <StoreContext.Consumer>
+            {
+                (store)=> {
+                    let state = store.getState().dialogPage;
+
+                    let addDialog = () => {
+                        store.dispatch(AddDialog())
+                    }
+                    let onDialogChange = (e) => {
+                        let NewDialog = e.target.value;
+                        store.dispatch(updateNewDialogText(NewDialog))
+                    }
+                    return <Dialogs
+                        dialogs={state.dialogs}
+                        messages={state.messages}
+                        AddDialog={addDialog}
+                        onDialogChange={onDialogChange}
+                        newDialogText = {state.newDialogText}/>
+                }
+            }
+        </StoreContext.Consumer>
     )
 }
 
