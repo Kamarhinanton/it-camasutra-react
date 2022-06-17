@@ -11,18 +11,27 @@ let initialState = {
 const profileReducer = (state= initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST:{
             let newPost = {
                 id: 5,
                 message: state.newPostText,
                 counts: 0,
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.text;
-            return state;
+            //по правилам ньютабельності маємо працювати з копією обєкту {...state}
+            //у reducer копіюємо тільки те що дійсно збираємось змінювати
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
+            stateCopy.posts.push(newPost)
+            stateCopy.newPostText = '';
+            return stateCopy;
+        }
+        case UPDATE_NEW_POST_TEXT:{
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
+
+            stateCopy.newPostText = action.text;
+            return stateCopy;
+        }
         default:
             return state;
     }

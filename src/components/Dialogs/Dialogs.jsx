@@ -6,14 +6,21 @@ import MessageItem from "./Messageitem/MessageItem";
 
 const Dialogs = (props) => {
     let dialogsElements = [
-        props.dialogs.map(dialog => <DialogsItem name={dialog.name} id={dialog.id} /> )
+        //key={dialog.id} щоб не було помилки key, у map завжди пторібно ставити атрибут key
+        props.dialogPage.dialogs.map(dialog => <DialogsItem key={dialog.id} name={dialog.name} id={dialog.id} /> )
     ];
     let messagesElement = [
-        props.messages.map(message => <MessageItem message = {message.message} /> )
+        props.dialogPage.messages.map(message => <MessageItem key={message.id} message = {message.message} /> )
     ];
+
     let onAddDialog = () => {
         props.AddDialog()
     }
+
+    let onDialogChange = (e) => {
+        let body = e.target.value;
+        props.updateNewDialog(body)
+    };
 
     return (
         <div>
@@ -26,7 +33,7 @@ const Dialogs = (props) => {
                 </div>
             </div>
             <div className={classes.content}>
-                <textarea onChange={props.onDialogChange} value={props.newDialogText}></textarea>
+                <textarea onChange={onDialogChange} value={props.dialogPage.newDialogText}></textarea>
                 <button onClick={onAddDialog}>add post</button>
                 <button>remove post</button>
             </div>

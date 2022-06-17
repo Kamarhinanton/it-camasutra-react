@@ -1,33 +1,22 @@
-import React from 'react';
 import {AddDialog, updateNewDialogText} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
 
-
-const DialogsContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store)=> {
-                    let state = store.getState().dialogPage;
-
-                    let addDialog = () => {
-                        store.dispatch(AddDialog())
-                    }
-                    let onDialogChange = (e) => {
-                        let NewDialog = e.target.value;
-                        store.dispatch(updateNewDialogText(NewDialog))
-                    }
-                    return <Dialogs
-                        dialogs={state.dialogs}
-                        messages={state.messages}
-                        AddDialog={addDialog}
-                        onDialogChange={onDialogChange}
-                        newDialogText = {state.newDialogText}/>
-                }
-            }
-        </StoreContext.Consumer>
-    )
+let mapStateToProps = (state) => {
+    return {
+        dialogPage: state.dialogPage
+    }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewDialog: (body) => {
+            dispatch(updateNewDialogText(body))
+        },
+        AddDialog: () => {dispatch(AddDialog())}
+    }
+}
+//connect має свій subscribe, тому не потрібно перемальовувати(subscribe) дерево при зміні state
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

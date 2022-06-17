@@ -14,7 +14,8 @@ const MyPosts = (props) => {
         let text = newPostElement.current.value;
         props.updateNewPostText(text)
     }
-    let posts = props.posts.map(post => <Post message ={post.message} likes={post.counts}/>)
+    //key={dialog.id} щоб не було помилки key, у map завжди пторібно ставити атрибут key
+    let posts = props.posts.map(post => <Post key={post.id} message ={post.message} likes={post.counts}/>)
     return <div>
         <h1>My posts</h1>
         <div className={classes.content}>

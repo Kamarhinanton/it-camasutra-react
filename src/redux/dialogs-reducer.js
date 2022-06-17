@@ -20,18 +20,33 @@ let initialState = {
 
 //для того щоб перетворити if else у switch case, натиснути на ліхтарик над if
 const dialogsReducer = (state=initialState, action) => {
+    let stateCopy;
     switch (action.type) {
-        case ADD_DIALOG:
-            let newDialog = {
-                id: 5,
-                message: state.newDialogText,
+        case UPDATE_NEW_DIALOG_TEXT:{
+            // stateCopy = {...state};
+            // stateCopy.newDialogText = action.text;
+            //скорочений варіант див.:
+            stateCopy = {
+                ...state,
+                newDialogText : action.text
+            //    одразу перезатерли newDialogText
             };
-            state.messages.push(newDialog);
-            state.newDialogText = '';
-            return state;
-        case UPDATE_NEW_DIALOG_TEXT:
-            state.newDialogText = action.text;
-            return state;
+            return stateCopy;
+        }
+        case ADD_DIALOG: {
+            // let stateCopy = {
+            // ...state,
+            // messages: [...state.messages]
+            // }
+            let body = state.newDialogText;
+            stateCopy = {
+                ...state,
+                newDialogText : '',
+                //... -спред оператор
+                messages : [...state.messages, {id: 5, message: body}]
+            };
+            return stateCopy;
+        }
         default:
             return  state;
     }
