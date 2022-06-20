@@ -10,6 +10,7 @@ import UsersContainer from "./components/users/UsersContainer";
 //react бібліотека яка відмальовує ui
 //reducer(преобразовувач) функція яка приймає state, action, якщо потрібно приміняє action і повертає новий state.
 //redux
+//axios бібліотека для роботи з запросами
 function App(props) {
     return (
           <div className='app-wrapper'>
