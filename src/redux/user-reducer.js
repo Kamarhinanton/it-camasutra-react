@@ -38,7 +38,7 @@ const userReducer = (state= initialState, action) => {
             }
         case SET_USERS :
             //до існуючого масиву з юзерами додаємо нових:
-            return {...state, users: [...state.users, ...action.users]}
+            return { ...state, users: action.users }
         default:
             return state;
     }

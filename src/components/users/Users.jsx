@@ -1,23 +1,21 @@
 import React from "react";
 import classes from './users.module.css'
+import axios from "axios";
+import userPhoto from '../../assets/images/user.png'
 
 let Users = (props) => {
-    //при підгрузці юзерів щоб не зациклилось:
-    if(props.users.length === 0){
-        props.setUsers ([
-            {id : 1, photoUrl:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png', followed: true, fullName: 'Anton', status:'programmer', location: {city: 'Khmelnitskyi', country: 'Ukraine'}},
-            {id : 2, photoUrl:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png', followed: false, fullName: 'Ehor', status:'Chef', location: {city: 'Kyiv', country: 'Ukraine'}},
-            {id : 3, photoUrl:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png', followed: true, fullName: 'Matviy', status:'Barist', location: {city: 'California', country: 'USA'}}
-        ])
+    if(props.users.length === 0) {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            props.setUsers(response.data.items)
+        });
     }
-
     return (
         <div>
             {
                 props.users.map(u => <div key = {u.id}>
                     <span>
                         <div>
-                            <img src={u.photoUrl} className={classes.photo} alt="user"/>
+                            <img src={u.photos.small != null ? u.photos.small: userPhoto} className={classes.photo} alt="user"/>
                         </div>
                         <div>
                             {
@@ -29,12 +27,12 @@ let Users = (props) => {
                     </span>
                     <span>
                         <span>
-                            <div>{u.fullName}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
                         <span>
-                            <div>{u.location.country}</div>
-                            <div>{u.location.city}</div>
+                            <div>country</div>
+                            <div>city</div>
                         </span>
                     </span>
                     </div>
