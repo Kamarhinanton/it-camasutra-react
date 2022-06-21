@@ -2,9 +2,9 @@ import React from "react";
 import classes from './users.module.css'
 import axios from "axios";
 import userPhoto from '../../assets/images/user.png'
-//стврорення обʼєктів за допомогою літерала обʼєкту let a = {name: 'Dima', age: 31}, та класів let a new Man('Dima', 31)
+//стврорення обʼєктів за допомогою літерала обʼєкту let a = {name: 'Dima', age: 31}
 
-let Users = (props) => {
+let UsersFuncComponent = (props) => {
 
     let getUsers = () => {
         if(props.users.length === 0) {
@@ -47,4 +47,4 @@ let Users = (props) => {
     )
 }
 
-export default Users;
+export default UsersFuncComponent;
