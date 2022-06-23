@@ -20,3 +20,8 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.preloader{
+    width: 50px!important;
+    height: 50px!important;
+}
