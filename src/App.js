@@ -6,6 +6,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/login";
 
 //react бібліотека яка відмальовує ui
 //reducer(преобразовувач) функція яка приймає state, action, якщо потрібно приміняє action і повертає новий state.
@@ -21,6 +22,7 @@ function App(props) {
                 <Route path ='/Dialogs' element={<DialogsContainer/>}/>
                 <Route path ='/Profile' element={<ProfileContainer/>}/>
                 <Route path ='/users' element={<UsersContainer/>} />
+                <Route path ='/login' element={<Login/>} />
               </Routes>
             </div>
           </div>

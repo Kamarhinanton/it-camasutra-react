@@ -21,6 +21,11 @@ const Navbar = () => {
                         users
                     </NavLink>
                 </li>
+                <li className={classes.item}>
+                    <NavLink to="login/" className={({ isActive }) => (isActive ? classes.active : undefined)}>
+                        login
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     )

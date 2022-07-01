@@ -1,9 +1,7 @@
 import React from 'react';
 import Profile from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
 import {getUserProfile} from "../../redux/profile-reducer";
-import {usersAPI} from "../../api/api";
 
 //...this.props, прокидує усі пропси які у нього прийшли
 
