@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
+import {toggleFollowingProgress} from "../../redux/user-reducer";
 
 let Users = (props) => {
 
