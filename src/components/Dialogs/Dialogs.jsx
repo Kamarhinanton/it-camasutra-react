@@ -2,9 +2,6 @@ import React from 'react';
 import classes from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./Messageitem/MessageItem";
-import {useNavigate} from 'react-router-dom';
-import {useEffect} from 'react';
-
 
 const Dialogs = (props) => {
     let dialogsElements = [
@@ -23,16 +20,6 @@ const Dialogs = (props) => {
         let body = e.target.value;
         props.updateNewDialog(body)
     };
-
-    //redirect з використанням хуків(navigate)
-
-    let navigate = useNavigate()
-
-    useEffect(()=>{
-        if(props.isAuth === false){
-            return navigate("../login")
-        }
-    }, [props.isAuth])
 
     return (
         <div>
