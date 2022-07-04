@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/preloader";
+import {compose} from "redux";
 
 class UsersContainer extends React.Component {
     //у класах обʼявляємо методи
@@ -104,10 +105,12 @@ let mapStateToProps = (state) => {
 
 //даний випадок еквівалентний тому, як ми записували у mapDispatchToProps як окрему функцію вище
 
-export default connect (mapStateToProps, {
-    follow,
-    unfollow,
-    setCurrentPage,
-    toggleFollowingProgress,
-    getUsers
-})(UsersContainer);
+export default compose (
+    connect (mapStateToProps, {
+        follow,
+        unfollow,
+        setCurrentPage,
+        toggleFollowingProgress,
+        getUsers
+    })
+) (UsersContainer);

@@ -2,6 +2,7 @@ import {AddDialog, updateNewDialogText} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {WithAuthRedirectComponent} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 let mapStateToProps = (state) => {
     return {
@@ -18,8 +19,11 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let AuthRedirectComponent = WithAuthRedirectComponent(Dialogs)
-//connect має свій subscribe, тому не потрібно перемальовувати(subscribe) дерево при зміні state
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
-export default DialogsContainer;
+//функція з redux бібліотеки
+
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    WithAuthRedirectComponent
+)(Dialogs)
