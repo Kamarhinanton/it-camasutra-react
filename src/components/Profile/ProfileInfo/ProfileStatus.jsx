@@ -3,6 +3,7 @@ import React from "react";
 class ProfileStatus extends React.Component {
     state = {
         editMode: false,
+        status: this.props.status
     }
 
     activateEditmode(){
@@ -15,9 +16,16 @@ class ProfileStatus extends React.Component {
         // this.state.editMode = true;
     //    this.satState вигонаеєтся після console.logів, тобто після виконання методу activateEditMode
     }
-    deactivateEditmode(){
+    deactivateEditmode = () =>{
         this.setState({
             editMode: false
+        });
+        this.props.updateStatus(this.state.status)
+    }
+
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
 
@@ -26,6 +34,7 @@ class ProfileStatus extends React.Component {
          <>
              {!this.state.editMode &&
                  <div>
+                     {/*bind привязує контекст назавжди, навіть якщо ми віддаємо фцію*/}
                      <span onClick={this.activateEditmode.bind(this)
                      }>{this.props.status}</span>
                  </div>
@@ -33,7 +42,7 @@ class ProfileStatus extends React.Component {
              {
                  this.state.editMode &&
                  <div>
-                     <input autoFocus={true} onBlur={this.deactivateEditmode.bind(this)} value={this.props.status}></input>
+                     <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditmode} value={this.state.status}></input>
                  </div>
              }
          </>
