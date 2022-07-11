@@ -15,7 +15,6 @@ let initialState = {
 }
 
 const profileReducer = (state= initialState, action) => {
-
     switch (action.type) {
         case ADD_POST:{
             let newPost = {
@@ -39,6 +38,7 @@ const profileReducer = (state= initialState, action) => {
             return stateCopy;
         }
         case SET_STATUS:{
+            debugger
             return {
                 ...state,
                 status: action.status
@@ -69,6 +69,7 @@ export const updateStatus = (status) => (dispatch) =>{
     profileAPI.updateStatus(status).then(response => {
         if(response.data.resultCode === 0) {
             dispatch(setStatus(status));
+            debugger
         }
     })
 }

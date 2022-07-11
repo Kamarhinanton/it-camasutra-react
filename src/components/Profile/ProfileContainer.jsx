@@ -20,7 +20,7 @@ class ProfileContainer extends React.Component{
     )
     }
 }
-
+//state це store.getState()
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status
