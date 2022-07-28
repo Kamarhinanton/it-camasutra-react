@@ -19,9 +19,8 @@ let Paginator = (props) => {
         <div className={classes.wrapper}>
             {
                 portionNumber > 1 &&
-                <button onClick={() => {
-                    setPortionNumber(portionNumber - 1)
-                }}> PREV </button>}
+                <button onClick={() => {setPortionNumber(portionNumber - 1)}}> PREV
+                </button>}
             {/*props.currentPage === p && classes.pagination*/}
             {page
                 .filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
